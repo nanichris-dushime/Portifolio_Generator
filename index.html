@@ -3,102 +3,255 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio Generator</title>
+    <title>Portfolio Generator Pro</title>
+    <meta name="description" content="Create a polished personal portfolio using HTML, CSS, and JavaScript.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Fraunces:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Navigation -->
-        <nav class="navbar">
-            <h1>Portfolio Generator</h1>
-        </nav>
-
-        <!-- Main Content -->
-        <div class="main-content">
-            <!-- Form Section -->
-            <div id="formSection" class="form-section">
-                <h2>Create Your Portfolio</h2>
-                <form id="portfolioForm">
-                    <!-- Personal Info -->
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sector">Sector / Industry *</label>
-                        <select id="sector" name="sector" required>
-                            <option value="">Select a sector</option>
-                            <option value="Technology">Technology</option>
-                            <option value="Design">Design & UX</option>
-                            <option value="Marketing">Marketing</option>
-                            <option value="Finance">Finance</option>
-                            <option value="Healthcare">Healthcare</option>
-                            <option value="Education">Education</option>
-                            <option value="Agriculture">Agriculture</option>
-                            <option value="Other">Other</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-
-                    <!-- Photo Upload -->
-                    <div class="form-group">
-                        <label for="photo">Profile Photo</label>
-                        <input type="file" id="photo" name="photo" accept="image/*">
-                        <div id="photoPreview" class="photo-preview"></div>
-                    </div>
-
-                    <!-- Description -->
-                    <div class="form-group">
-                        <label for="description">Professional Description *</label>
-                        <textarea id="description" name="description" rows="4" placeholder="Tell us about yourself..." required></textarea>
-                    </div>
-
-                    <!-- CV -->
-                    <div class="form-group">
-                        <label for="cv">Your CV / Experience</label>
-                        <textarea id="cv" name="cv" rows="4" placeholder="Paste your CV or describe your experience..."></textarea>
-                    </div>
-
-                    <!-- Projects Section -->
-                    <div class="form-group">
-                        <h3>Projects You're Working On</h3>
-                        <div id="projectsContainer">
-                            <div class="project-item">
-                                <input type="text" class="project-name" placeholder="Project Name">
-                                <textarea class="project-description" rows="2" placeholder="Project Description"></textarea>
-                            </div>
-                        </div>
-                        <button type="button" id="addProjectBtn" class="btn-secondary">+ Add Another Project</button>
-                    </div>
-
-                    <!-- Submit -->
-                    <div class="form-actions">
-                        <button type="submit" id="generateBtn" class="btn-primary">Generate Portfolio</button>
-                        <button type="reset" class="btn-secondary">Clear Form</button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Portfolio Display Section -->
-            <div id="portfolioSection" class="portfolio-section" style="display: none;">
-                <button id="backBtn" class="btn-back">← Back to Form</button>
-                
-                <div class="portfolio-container">
-                    <div id="portfolioContent"></div>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-mark">PG</span>
+                <div>
+                    <p class="eyebrow">Professional Builder</p>
+                    <h1>Portfolio Generator</h1>
                 </div>
             </div>
-        </div>
+            <p class="topbar-copy">Build a more credible personal brand profile with a single smart form.</p>
+        </header>
+
+        <main class="app-grid">
+            <section class="intro-panel">
+                <p class="eyebrow">Modern Portfolio Experience</p>
+                <h2>Turn raw career details into a polished digital portfolio.</h2>
+                <p class="intro-copy">
+                    This upgraded version helps professionals present their story with stronger structure,
+                    clearer project showcases, better contact details, and a cleaner visual identity.
+                </p>
+
+                <div class="feature-list">
+                    <article class="feature-card">
+                        <h3>Sharper Positioning</h3>
+                        <p>Add your headline, bio, skills, and measurable impact for a stronger first impression.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Portfolio-Ready Layout</h3>
+                        <p>Generate a responsive portfolio page with themed visuals, highlights, and project cards.</p>
+                    </article>
+                    <article class="feature-card">
+                        <h3>Practical Workflow</h3>
+                        <p>Save progress locally, manage multiple projects, and print the final result cleanly.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="workspace-panel">
+                <div id="formSection" class="form-section">
+                    <div class="section-heading">
+                        <p class="eyebrow">Input Workspace</p>
+                        <h2>Create Your Portfolio</h2>
+                        <p>Fill in the essentials below and generate a portfolio that feels presentation-ready.</p>
+                    </div>
+
+                    <form id="portfolioForm" novalidate>
+                        <div class="form-layout">
+                            <section class="form-card">
+                                <div class="card-heading">
+                                    <h3>Professional Identity</h3>
+                                    <p>Introduce who you are and the kind of work you do.</p>
+                                </div>
+
+                                <div class="input-grid two-column">
+                                    <div class="form-group">
+                                        <label for="name">Full Name *</label>
+                                        <input type="text" id="name" name="name" placeholder="Jane Doe" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="role">Professional Title *</label>
+                                        <input type="text" id="role" name="role" placeholder="Frontend Developer" required>
+                                    </div>
+                                </div>
+
+                                <div class="input-grid two-column">
+                                    <div class="form-group">
+                                        <label for="sector">Sector / Industry *</label>
+                                        <select id="sector" name="sector" required>
+                                            <option value="">Select a sector</option>
+                                            <option value="Technology">Technology</option>
+                                            <option value="Design">Design & UX</option>
+                                            <option value="Marketing">Marketing</option>
+                                            <option value="Finance">Finance</option>
+                                            <option value="Healthcare">Healthcare</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Agriculture">Agriculture</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" name="location" placeholder="Kigali, Rwanda">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="tagline">Short Tagline</label>
+                                    <input type="text" id="tagline" name="tagline" placeholder="Building thoughtful digital experiences with measurable impact.">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="description">Professional Summary *</label>
+                                    <textarea id="description" name="description" rows="5" placeholder="Describe your background, strengths, and the value you bring..." required></textarea>
+                                </div>
+                            </section>
+
+                            <section class="form-card">
+                                <div class="card-heading">
+                                    <h3>Contact & Presence</h3>
+                                    <p>Make it easy for people to reach you and explore your work.</p>
+                                </div>
+
+                                <div class="input-grid two-column">
+                                    <div class="form-group">
+                                        <label for="email">Email</label>
+                                        <input type="email" id="email" name="email" placeholder="jane@example.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="phone">Phone</label>
+                                        <input type="tel" id="phone" name="phone" placeholder="+250 7XX XXX XXX">
+                                    </div>
+                                </div>
+
+                                <div class="input-grid two-column">
+                                    <div class="form-group">
+                                        <label for="website">Website</label>
+                                        <input type="url" id="website" name="website" placeholder="https://yourwebsite.com">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="linkedin">LinkedIn / Social</label>
+                                        <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/username">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="skills">Core Skills</label>
+                                    <input type="text" id="skills" name="skills" placeholder="HTML, CSS, JavaScript, UI Design, SEO">
+                                    <small>Separate skills with commas.</small>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="photo">Profile Photo</label>
+                                    <input type="file" id="photo" name="photo" accept="image/*">
+                                    <div id="photoPreview" class="photo-preview">
+                                        <span>No image selected</span>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="form-card">
+                                <div class="card-heading">
+                                    <h3>Experience Narrative</h3>
+                                    <p>Add the details that strengthen your credibility.</p>
+                                </div>
+
+                                <div class="input-grid three-column">
+                                    <div class="form-group">
+                                        <label for="yearsExperience">Years of Experience</label>
+                                        <input type="number" id="yearsExperience" name="yearsExperience" min="0" placeholder="4">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="clientsCount">Clients / Teams Served</label>
+                                        <input type="number" id="clientsCount" name="clientsCount" min="0" placeholder="18">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="projectsCount">Projects Delivered</label>
+                                        <input type="number" id="projectsCount" name="projectsCount" min="0" placeholder="26">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="cv">Experience / CV Highlights</label>
+                                    <textarea id="cv" name="cv" rows="5" placeholder="Summarize your experience, achievements, roles, certifications, or education..."></textarea>
+                                </div>
+                            </section>
+
+                            <section class="form-card">
+                                <div class="card-heading">
+                                    <h3>Featured Projects</h3>
+                                    <p>Showcase the work that best represents your capability.</p>
+                                </div>
+
+                                <div id="projectsContainer" class="projects-stack"></div>
+
+                                <button type="button" id="addProjectBtn" class="btn-secondary">Add Project</button>
+                            </section>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="generateBtn" class="btn-primary">Generate Portfolio</button>
+                            <button type="button" id="saveDraftBtn" class="btn-secondary">Save Draft</button>
+                            <button type="reset" id="clearBtn" class="btn-ghost">Clear Form</button>
+                        </div>
+                    </form>
+                </div>
+
+                <section id="portfolioSection" class="portfolio-section hidden">
+                    <div class="preview-actions">
+                        <button id="backBtn" class="btn-ghost">Back to Form</button>
+                        <button id="printBtn" class="btn-primary" type="button">Print / Save PDF</button>
+                    </div>
+
+                    <div id="portfolioContent"></div>
+                </section>
+            </section>
+        </main>
     </div>
+
+    <template id="projectTemplate">
+        <article class="project-item">
+            <div class="project-item-header">
+                <h4>Project</h4>
+                <button type="button" class="remove-project-btn" aria-label="Remove project">Remove</button>
+            </div>
+
+            <div class="input-grid two-column">
+                <div class="form-group">
+                    <label>Project Name</label>
+                    <input type="text" class="project-name" placeholder="Customer Dashboard Redesign">
+                </div>
+
+                <div class="form-group">
+                    <label>Project Link</label>
+                    <input type="url" class="project-link" placeholder="https://example.com">
+                </div>
+            </div>
+
+            <div class="input-grid two-column">
+                <div class="form-group">
+                    <label>Project Role</label>
+                    <input type="text" class="project-role" placeholder="Lead Developer">
+                </div>
+
+                <div class="form-group">
+                    <label>Impact / Result</label>
+                    <input type="text" class="project-impact" placeholder="Improved conversions by 22%">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Project Description</label>
+                <textarea class="project-description" rows="3" placeholder="Describe the problem, your solution, and what made this project successful."></textarea>
+            </div>
+        </article>
+    </template>
 
     <script src="index.js"></script>
 </body>
